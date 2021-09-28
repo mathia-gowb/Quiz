@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <script src="https://use.fontawesome.com/81a6339b46.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            font-family: 'Lato', sans-serif;
+        }
+        *{
+            padding:none;
+            margin:0
+        }
+        main{
+            background-image: url('./jeremy-bezanger-nipbRVoEp18-unsplash.jpg');
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .quiz-questions-container{
+            width:35%;
+            min-height:35%;
+            background-color:white;
+            border-radius:10px;
+            padding:5rem;
+            box-shadow:1px 1px 80px -14px rgb(0, 0, 0);
+            position:relative
+        }
+        .submit-buttons{
+            position:absolute;
+            background-color:indigo;
+            max-width:100%;
+            bottom:0;
+            left:0;
+            right:0;
+            padding:5px 30px;
+            text-align: center;
+            display:flex;
+            justify-content:space-around
+        }
+        .submit-buttons div{
+            display:flex;
+            align-items: center;
+            background-color: rgb(89, 5, 150);
+            color:white;
+            cursor:pointer;
+            transition: 0.5s all
+        }
+        .submit-buttons *{
+            padding:0.5rem 2rem;
+        }
+        .submit-buttons div:hover{
+            background-color: rgb(102, 8, 170);
+        }
+        .submit-buttons i{
+            font-size:20px
+        }
+    </style>
+    <main class="wrapper">
+        <div class="quiz-questions-container">
+            <h1>How would you like premium to help ?</h1>
+            <form action="index.html">
+                <br>
+                <br>
+                <input type="radio" name="option" id="option-1" value="value-1">
+                <label for="option-1"> Answer 1</label>
+                <br>
+                <br>
+                <input type="radio" name="option" id="option-2" value="value-2">
+                <label for="option-2"> Your answer 2</label>
+                <br>
+                <br>
+                <input type="radio" name="option" id="option-3" value="value-3">
+                <label for="option-3"> Your answer 3</label>
+                <br>
+                <br>
+                <input type="radio" name="option" id="option-4" value="value-4">
+                <label for="option-3"> Your answer 4</label>
+            </form>
+            <div class="submit-buttons">
+                <div class="back-button"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</div>
+                <div class="foward-button"> Proceed<i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
