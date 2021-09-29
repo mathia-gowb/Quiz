@@ -63,13 +63,20 @@ function loadQuiz(){
         optionSelected=true;
     })); 
 }
+function handleElement(element,property){
+    html_elements[element].style.display=property;
+}
 function controlUiButtons(){
     if(question_index===questions.length-1){
-
-        html_elements.proceed_button.style.display='none';
-        html_elements.complete_button.style.display='block';
-
+        handleElement('proceed_button','none');
+        handleElement('complete_button','block')
+        return
     }
+    if(question_index===0){
+        handleElement('back_button','none');
+        return
+    }
+    handleElement('back_button','block')
 }
 function getFinalAnswer(){
     const point=currAnswer===answers[question_index]?1:0;
@@ -91,4 +98,9 @@ html_elements.proceed_button.addEventListener('click',()=>{
         
     }
 
+})
+html_elements.complete_button.addEventListener('click',()=>{
+    if(optionSelected){
+
+    }
 })
