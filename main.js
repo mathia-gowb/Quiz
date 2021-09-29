@@ -3,6 +3,7 @@ const html_elements={
     options_container:document.getElementById("options-container"),
     proceed_button:document.querySelector('.foward-button'),
     back_button:document.querySelector('.back-button'),
+    complete_button:document.getElementById("complete-button"),
     create_answers(option_num,option_string,option_value){
         return `<br><br>
         <input type="radio" name="option" id="option-${option_num}" value="${option_value}">
@@ -38,6 +39,7 @@ const answers=[
     questions[3]['possible_answers'][2],
     questions[4]['possible_answers'][4]
 ];
+let optionSelected=false;
 let currAnswer="";
 /* FOR TRACKING THE QUESTION WE ARE IN ---> THIS INDEX WILL ALSO BE USED FOR THE BACK OPTION AND FOWARD OPTION */
 let question_index=0;
@@ -47,15 +49,27 @@ else the question has not been answered */
 const answers_history=[];
 
 function loadQuiz(){
+    controlUiButtons();
     const currQuestion=questions[question_index];
+    /* refreshes the ui */
     html_elements.options_container.textContent="";
     html_elements.question_header.textContent=currQuestion.question+" ?";
     currQuestion.possible_answers.forEach((answer,i)=>{
         html_elements.options_container.insertAdjacentHTML("beforeend",html_elements.create_answers(i,answer,answer))
     }) ;
+    optionSelected=false;
     const options = document.querySelectorAll('input[type=radio]').forEach(el=>el.addEventListener('click',function (){
         currAnswer=this.value;
+        optionSelected=true;
     })); 
+}
+function controlUiButtons(){
+    if(question_index===questions.length-1){
+
+        html_elements.proceed_button.style.display='none';
+        html_elements.complete_button.style.display='block';
+
+    }
 }
 function getFinalAnswer(){
     const point=currAnswer===answers[question_index]?1:0;
@@ -71,6 +85,10 @@ html_elements.back_button.addEventListener('click',()=>{
 })
 html_elements.proceed_button.addEventListener('click',()=>{
     /* go to the previously answered question */
-    question_index++;
-    loadQuiz();
+    if(optionSelected){
+        question_index++;
+        loadQuiz();
+        
+    }
+
 })
